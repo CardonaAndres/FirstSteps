@@ -49,10 +49,27 @@ export const PokemonCard = ({ pokemon }: Props) => {
               </div>
               <div className="ml-3 flex-1">
                 <p className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-200">
-                  Ver Detalles
+                  Consultar por ID
                 </p>
                 <p className="text-xs text-gray-500">
-                  Información completa del Pokémon
+                  Información completa del Pokémon consultada por ID
+                </p>
+              </div>
+              <ArrowRight className="w-4 h-4 text-gray-600" />
+            </div>
+          </Link>
+          <Link href={`/pokemons/${pokemon.name}`} className="block w-full"
+          >
+            <div className="flex items-center p-3 rounded-lg hover:bg-blue-50 transition-colors duration-200 group cursor-pointer">
+              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
+                <InfoIcon className="text-blue-900" />
+              </div>
+              <div className="ml-3 flex-1">
+                <p className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-200">
+                  Consultar por nombre
+                </p>
+                <p className="text-xs text-gray-500">
+                  Información completa del Pokémon consultada por nombre
                 </p>
               </div>
               <ArrowRight className="w-4 h-4 text-gray-600" />

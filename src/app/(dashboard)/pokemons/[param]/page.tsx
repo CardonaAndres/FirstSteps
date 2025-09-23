@@ -3,31 +3,32 @@ import type { Metadata } from "next";
 import { PokemonAPI } from "../services";
 
 interface Props {
-  params: Promise<{ id: string }>; 
+  params: Promise<{ param: string }>; 
 }
 
-// ! En BUILD time
+// * En BUILD time
 export async function generateStaticParams() {
-  
-  const staticPokemons = Array.from({ length: 151 }).map((_, i) => ({
+  const ids  = Array.from({ length: 151 }).map((_, i) => ({
     id: `${i + 1}`
   }));
 
-  return staticPokemons;
+  const names = await PokemonAPI.getPokemons(151);
+  const byName = names.map(p => ({ param: p.name }));
+
+  return [...ids, ...byName];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-
   try {
-    const pokemon = await PokemonAPI.getPokemon(id);
+    const { param } = await params;
+    const pokemon = await PokemonAPI.getPokemon(param);
       
     return {
       title: `#${pokemon.id.toString().padStart(3, '0')} - ${pokemon.name}`,
       description: `Información completa del Pokémon ${pokemon.name} - Tipo: ${pokemon.types.map(t => t.type.name).join(', ')}`,
     };
 
-  } catch (err) {
+  } catch {
 
     return {
       title: 'Pokémon no encontrado',
@@ -38,8 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PokemonPage({ params }: Props) { 
-  const { id } = await params;
-  const pokemon = await PokemonAPI.getPokemon(id);
+  const { param } = await params;
+
+  const pokemon = await PokemonAPI.getPokemon(param);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8 px-4">

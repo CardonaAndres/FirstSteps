@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
 import { PokemonAPI } from './services';
 import { PokemonGrid } from "./components";
+
+export const metadata: Metadata = {
+  title: 'Listado de Pokemons',
+  description: 'Consulta todos los pokemons disponibles en nuestra plataforma',
+};  
 
 export default async function PokemonsPage() {
   const pokemons = await PokemonAPI.getPokemons(151);  

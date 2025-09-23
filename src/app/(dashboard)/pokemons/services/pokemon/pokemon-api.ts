@@ -15,8 +15,8 @@ export class PokemonAPI {
         return pokemons;
     }
 
-    static async getPokemon(id: string): Promise<Pokemon>{
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+    static async getPokemon(param: string): Promise<Pokemon>{
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${param}`, {
             cache: 'force-cache'
         });
 
