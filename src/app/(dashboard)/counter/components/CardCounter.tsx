@@ -4,13 +4,22 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/global/store';
 import { decrement, increment, initialize } from '@/global/store/counter';
 
+const getApiCounter = async () => {
+  const data = await fetch(`/api/counter`, {
+    method: 'GET',
+  }).then((res) => res.json());
+
+  return data.count;
+}
+
 export const CardCounter = ({ defaultValue = 0 }) => {
   const dispatch = useAppDispatch();
   const { value } = useAppSelector((state) => state.counter);
 
   useEffect(() => {
-    dispatch(initialize(defaultValue));
-  }, [dispatch, defaultValue]);
+    getApiCounter()
+      .then(({ value }) => dispatch(initialize(value)))
+  }, [dispatch]);
 
   return (
     <>
