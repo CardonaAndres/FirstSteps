@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ActiveLink } from "./ActiveLink";
 import { LinkType } from "@/global/assets/ts/types";
-import { Calculator, Diameter, LayoutDashboard, } from "lucide-react";
+import { Calculator, Diameter, Heart, LayoutDashboard, } from "lucide-react";
 
 const menuItems: LinkType[] = [
     {
@@ -21,6 +21,12 @@ const menuItems: LinkType[] = [
         label: 'Pokemons',
         description: 'Generación Estatica',
         icon: <Diameter className="w-8 h-8" />
+    },
+    {
+        href: '/pokemons/favorites',
+        label: 'Mis Pokemons Favoritos',
+        description: 'Mis pokemons favoritos',
+        icon: <Heart className="w-8 h-8" />
     },
 ];
 

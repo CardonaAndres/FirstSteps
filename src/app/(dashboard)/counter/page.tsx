@@ -11,8 +11,7 @@ export default function CounterPage() {
   return (
     <main className="flex flex-col items-center justify-center w-full h-full">
       <span>Productos en el carrito</span>
-      <CardCounter />
-
+      <CardCounter defaultValue={8} />
     </main>
   );
 }

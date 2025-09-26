@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };  
 
 export default async function PokemonsPage() {
-  const pokemons = await PokemonAPI.getPokemons(151);  
+  const pokemons = await PokemonAPI.getPokemons(20);  
 
   return (
     <main className="flex flex-col">

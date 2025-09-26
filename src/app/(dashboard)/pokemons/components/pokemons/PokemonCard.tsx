@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SimplePokemon } from "../../interfaces";
-import { ArrowRight, InfoIcon } from "lucide-react";
+import { ArrowRight, InfoIcon, Heart } from "lucide-react";
 
 interface Props {
   pokemon: SimplePokemon;
@@ -15,6 +15,18 @@ export const PokemonCard = ({ pokemon }: Props) => {
       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
         {/* Header con imagen del Pokémon */}
         <div className="relative bg-gradient-to-br from-blue-500 to-purple-600 p-6">
+          {/* Botón de favoritos en la esquina superior derecha */}
+          <div className="absolute top-3 right-3">
+            {/* <input type="hidden" name="pokemonId" value={pokemon.id} /> */}
+            {/* <input type="hidden" name="pokemonName" value={pokemon.name} /> */}
+            <button 
+              className="bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-2 transition-all duration-200 group"
+              title="Guardar en favoritos"
+            >
+              <Heart className="w-5 h-5 text-white group-hover:fill-red-400 group-hover:text-red-400 transition-all duration-200" />
+            </button>
+          </div>
+
           <div className="flex justify-center">
             <div className="relative">
               <Image

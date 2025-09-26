@@ -1,3 +1,4 @@
+import { ReduxProvider } from "@/global/store/providers/ReduxProvider";
 import "../global/assets/css/globals.css";
 import type { Metadata } from "next"; 
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children, }: Readonly<Props>) {
   return (
     <html lang="es">
       <body>
-        {children}
+        <ReduxProvider >
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
